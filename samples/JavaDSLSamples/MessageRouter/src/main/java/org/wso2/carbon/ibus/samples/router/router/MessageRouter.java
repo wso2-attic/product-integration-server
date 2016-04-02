@@ -16,7 +16,7 @@
 * under the License.
 */
 
-package org.wso2.carbon.gateway.core.samples.router;
+package org.wso2.carbon.ibus.samples.router.router;
 
 
 import org.wso2.carbon.gateway.core.config.dsl.internal.JavaConfigurationBuilder;

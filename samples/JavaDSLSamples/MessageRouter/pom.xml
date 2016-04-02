@@ -101,9 +101,9 @@
     </build>
 
     <properties>
-       <bundle.activator>org.wso2.carbon.gateway.core.samples.router.Activator</bundle.activator>
+       <bundle.activator>org.wso2.carbon.ibus.samples.router.router.Activator</bundle.activator>
         <export.package>
-            org.wso2.carbon.gateway.core.samples.router;version="1.0.0"
+            org.wso2.carbon.ibus.samples.router.router;version="1.0.0"
         </export.package>
         <import.package>
             org.osgi.framework.*;version="${osgi.framework.import.version.range}",

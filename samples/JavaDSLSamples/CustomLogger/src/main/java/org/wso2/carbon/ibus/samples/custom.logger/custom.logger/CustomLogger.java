@@ -16,7 +16,7 @@
 * under the License.
 */
 
-package org.wso2.carbon.gateway.core.samples.custom.logger;
+package org.wso2.carbon.ibus.samples.custom.logger.custom.logger;
 
 
 import org.wso2.carbon.gateway.core.config.dsl.internal.JavaConfigurationBuilder;

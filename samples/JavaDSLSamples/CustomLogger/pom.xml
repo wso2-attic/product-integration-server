@@ -100,9 +100,9 @@
     </build>
 
     <properties>
-       <bundle.activator>org.wso2.carbon.gateway.core.samples.custom.logger.Activator</bundle.activator>
+       <bundle.activator>org.wso2.carbon.ibus.samples.custom.logger.custom.logger.Activator</bundle.activator>
         <export.package>
-            org.wso2.carbon.gateway.core.samples.custom.logger;version="1.0.0"
+            org.wso2.carbon.ibus.samples.custom.logger.custom.logger;version="1.0.0"
         </export.package>
         <import.package>
             org.osgi.framework.*;version="${osgi.framework.import.version.range}",
