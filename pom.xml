@@ -22,7 +22,7 @@
     <parent>
         <groupId>org.wso2</groupId>
         <artifactId>wso2</artifactId>
-        <version>2</version>
+        <version>3</version>
     </parent>
 
     <groupId>org.wso2.carbon.ibus</groupId>
@@ -173,7 +173,7 @@
     <properties>
         <!-- Maven plugins -->
         <maven.checkstyleplugin.version>2.16</maven.checkstyleplugin.version>
-        <maven.findbugsplugin.version>3.0.2</maven.findbugsplugin.version>
+        <maven.findbugsplugin.version>3.0.3</maven.findbugsplugin.version>
 
         <!-- Dependencies -->
         <carbon.kernel.version>5.0.0</carbon.kernel.version>
