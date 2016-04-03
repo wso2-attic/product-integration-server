@@ -65,11 +65,6 @@
             <groupId>org.wso2.carbon.messaging</groupId>
             <artifactId>org.wso2.carbon.messaging</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.custom</groupId>
-            <artifactId>SampleCustomMediator</artifactId>
-            <version>1.0</version>
-        </dependency>
     </dependencies>
 
     <build>
