@@ -17,8 +17,8 @@
   -->
 <assembly>
     <includeBaseDirectory>true</includeBaseDirectory>
-    <baseDirectory>wso2ibus-${project.version}</baseDirectory>
-    <id>Integration Bus</id>
+    <baseDirectory>wso2iserver-${project.version}</baseDirectory>
+    <id>Integration Server</id>
     <formats>
         <format>zip</format>
     </formats>

@@ -16,40 +16,33 @@
 * under the License.
 */
 
-package org.wso2.carbon.ibus.samples.router.router;
+package org.wso2.carbon.iserver.samples.custom.logger;
 
 
 import org.wso2.carbon.gateway.core.config.dsl.internal.JavaConfigurationBuilder;
-import static org.wso2.carbon.gateway.core.config.dsl.internal.flow.mediators.CallMediatorBuilder.call;
-import static org.wso2.carbon.gateway.core.config.dsl.internal.flow.mediators.FilterMediatorBuilder.pattern;
-import static org.wso2.carbon.gateway.core.config.dsl.internal.flow.mediators.FilterMediatorBuilder.source;
+
 import static org.wso2.carbon.gateway.inbounds.http.builder.HTTPInboundEPBuilder.context;
 import static org.wso2.carbon.gateway.inbounds.http.builder.HTTPInboundEPBuilder.http;
 import static org.wso2.carbon.gateway.inbounds.http.builder.HTTPInboundEPBuilder.port;
+import static org.wso2.carbon.gateway.mediators.samplemediator.builder.SampleCustomMediatorBuilder.customLog;
 import static org.wso2.carbon.gateway.outbounds.http.builder.HTTPOutboundEPBuilder.httpOutboundEndpoint;
 import static org.wso2.carbon.gateway.outbounds.http.builder.HTTPOutboundEPBuilder.uri;
 
 /**
- * Sample Internal DSL in method 1
+ * This is a sample for demonstrating custom mediator functionality
  */
-public class MessageRouter extends JavaConfigurationBuilder {
+public class CustomLogger extends JavaConfigurationBuilder {
 
     public IntegrationFlow configure() {
 
-        IntegrationFlow router = integrationFlow("Message_Router");
+        IntegrationFlow router = integrationFlow("Custom_Logger");
 
-        router.inboundEndpoint("inboundEndpoint1", http(port(7777), context("/router"))).
-                   pipeline("pipeline1").
-                   filter(source("$header.routeId"), pattern("r1")).
-                   then(call("outboundEp1")).
-                   otherwise(call("outboundEp2")).
-                   respond();
+        router.inboundEndpoint("inboundEndpoint1", http(port(7777), context("/customLogger"))).
+                   pipeline("pipeline1").process(customLog("This is logged from Custom Mediator...!")).
+                   call("outboundEp1").respond();
 
         router.outboundEndpoint(httpOutboundEndpoint(
                 "outboundEp1", uri("http://localhost:8280/backend1")));
-
-        router.outboundEndpoint(httpOutboundEndpoint(
-                "outboundEp2", uri("http://localhost:8280/backend2")));
 
         return router;
 

@@ -21,14 +21,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.wso2.carbon.ibus</groupId>
-        <artifactId>org.wso2.carbon.ibus.samples</artifactId>
+        <groupId>org.wso2.carbon.iserver</groupId>
+        <artifactId>org.wso2.carbon.iserver.samples</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
     <name>Custom Logger</name>
-    <groupId>org.wso2.carbon.ibus.samples.custom.logger</groupId>
+    <groupId>org.wso2.carbon.iserver.samples.custom.logger</groupId>
     <artifactId>CustomLogger</artifactId>
     <version>1.0</version>
     <packaging>bundle</packaging>
@@ -100,9 +100,9 @@
     </build>
 
     <properties>
-       <bundle.activator>org.wso2.carbon.ibus.samples.custom.logger.custom.logger.Activator</bundle.activator>
+       <bundle.activator>org.wso2.carbon.iserver.samples.custom.logger.Activator</bundle.activator>
         <export.package>
-            org.wso2.carbon.ibus.samples.custom.logger.custom.logger;version="1.0.0"
+            org.wso2.carbon.iserver.samples.custom.logger;versionGIT ="1.0.0"
         </export.package>
         <import.package>
             org.osgi.framework.*;version="${osgi.framework.import.version.range}",

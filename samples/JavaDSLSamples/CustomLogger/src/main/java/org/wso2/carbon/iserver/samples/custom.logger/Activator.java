@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.carbon.ibus.samples.custom.logger.custom.logger;
+package org.wso2.carbon.iserver.samples.custom.logger;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;

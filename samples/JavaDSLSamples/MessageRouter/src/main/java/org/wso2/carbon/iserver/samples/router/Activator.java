@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.carbon.ibus.samples.router.router;
+package org.wso2.carbon.iserver.samples.router;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;

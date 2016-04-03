@@ -20,16 +20,16 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.wso2.carbon.ibus</groupId>
-        <artifactId>org.wso2.carbon.ibus.parent</artifactId>
+        <groupId>org.wso2.carbon.iserver</groupId>
+        <artifactId>org.wso2.carbon.iserver.parent</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>wso2ibus</artifactId>
+    <artifactId>wso2iserver</artifactId>
     <packaging>pom</packaging>
-    <name>WSO2 Integration Bus - Distribution</name>
-    <description>WSO2 Integration Bus - Distribution</description>
+    <name>WSO2 Integration Server - Distribution</name>
+    <description>WSO2 Integration Server - Distribution</description>
     <url>http://wso2.org</url>
 
     <dependencies>
