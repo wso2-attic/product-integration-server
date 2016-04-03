@@ -33,6 +33,5 @@
     <modules>
         <module>JavaDSLSamples/MessageRouter</module>
         <module>JavaDSLSamples/CustomLogger</module>
-        <module>SampleServices/Logging-Service</module>
     </modules>
 </project>
