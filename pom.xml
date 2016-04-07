@@ -148,6 +148,26 @@
                 <artifactId>org.wso2.carbon.core</artifactId>
                 <version>${carbon.kernel.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.wso2.carbon.gateway.converters</groupId>
+                <artifactId>org.wso2.carbon.gateway.converters.xmltojson</artifactId>
+                <version>${carbon.gw.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.wso2.carbon.gateway.converters</groupId>
+                <artifactId>org.wso2.carbon.gateway.converters.xmltojson.feature</artifactId>
+                <version>${carbon.gw.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.wso2.carbon.gateway.converters</groupId>
+                <artifactId>org.wso2.carbon.gateway.converters.jsontoxml</artifactId>
+                <version>${carbon.gw.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.wso2.carbon.gateway.converters</groupId>
+                <artifactId>org.wso2.carbon.gateway.converters.jsontoxml.feature</artifactId>
+                <version>${carbon.gw.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -185,6 +205,7 @@
         <osgi.service.tracker.import.version.range>[1.5.1, 2.0.0)</osgi.service.tracker.import.version.range>
         <carbon.p2.plugin.version>1.5.4</carbon.p2.plugin.version>
         <carbon.feature.plugin.version>2.0.0</carbon.feature.plugin.version>
+        <!--<gateway.type-converters.version>1.0.0-SNAPSHOT</gateway.type-converters.version>-->
 
         <antlr4.runtime.version>4.5.1.wso2v1</antlr4.runtime.version>
         <plugin.version.antlr>4.5.1</plugin.version.antlr>

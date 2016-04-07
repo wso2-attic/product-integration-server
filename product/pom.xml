@@ -16,7 +16,8 @@
   ~ * limitations under the License.
   ~ */
   -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -86,6 +87,18 @@
         <dependency>
             <groupId>org.wso2.carbon.gateway.mediators</groupId>
             <artifactId>org.wso2.carbon.gateway.mediators.samplemediator.feature</artifactId>
+            <version>${carbon.gw.version}</version>
+            <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon.gateway.converters</groupId>
+            <artifactId>org.wso2.carbon.gateway.converters.xmltojson.feature</artifactId>
+            <version>${carbon.gw.version}</version>
+            <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon.gateway.converters</groupId>
+            <artifactId>org.wso2.carbon.gateway.converters.jsontoxml.feature</artifactId>
             <version>${carbon.gw.version}</version>
             <type>zip</type>
         </dependency>
@@ -164,6 +177,14 @@
                                 </feature>
                                 <feature>
                                     <id>org.wso2.carbon.gateway.mediators.samplemediator.feature</id>
+                                    <version>${carbon.gw.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.gateway.converters.xmltojson.feature</id>
+                                    <version>${carbon.gw.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.gateway.converters.jsontoxml.feature</id>
                                     <version>${carbon.gw.version}</version>
                                 </feature>
                             </features>
@@ -246,6 +267,18 @@
                                     <id>org.wso2.carbon.gateway.mediators.samplemediator.feature</id>
                                     <version>${carbon.gw.version}</version>
                                 </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.gateway.mediators.samplemediator.feature</id>
+                                    <version>${carbon.gw.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.gateway.converters.xmltojson.feature</id>
+                                    <version>${carbon.gw.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.gateway.converters.jsontoxml.feature</id>
+                                    <version>${carbon.gw.version}</version>
+                                </feature>
                             </features>
                         </configuration>
                     </execution>
@@ -260,8 +293,9 @@
                         <phase>package</phase>
                         <configuration>
                             <tasks>
-                                <replace dir="target/wso2carbon-kernel-${carbon.kernel.version}/osgi" token="false" value="true">
-                                    <include name="**/bundles.info" />
+                                <replace dir="target/wso2carbon-kernel-${carbon.kernel.version}/osgi" token="false"
+                                         value="true">
+                                    <include name="**/bundles.info"/>
                                 </replace>
                             </tasks>
                         </configuration>
@@ -274,13 +308,13 @@
                         <phase>install</phase>
                         <configuration>
                             <target>
-                                <delete dir="target/archive-tmp" />
-                                <delete dir="target/dependency-maven-plugin-markers" />
-                                <delete dir="target/org.eclipse.equinox.executable-3.5.0.v20110530-7P7NFUFFLWUl76mart" />
-                                <delete dir="target/p2-repo" />
-                                <delete file="target/tmp" />
-                                <delete dir="target/wso2carbon-kernel-${carbon.kernel.version}" />
-                                <delete dir="target/antrun" />
+                                <delete dir="target/archive-tmp"/>
+                                <delete dir="target/dependency-maven-plugin-markers"/>
+                                <delete dir="target/org.eclipse.equinox.executable-3.5.0.v20110530-7P7NFUFFLWUl76mart"/>
+                                <delete dir="target/p2-repo"/>
+                                <delete file="target/tmp"/>
+                                <delete dir="target/wso2carbon-kernel-${carbon.kernel.version}"/>
+                                <delete dir="target/antrun"/>
                             </target>
                         </configuration>
                         <goals>
