@@ -1,7 +1,6 @@
 @startuml
 
-#Defining my integration flow
-myIntegrationFlow : IntegrationFlow
+IntegrationFlow : myIntegrationFlow
 
 participant StocksInbound : InboundEndpoint(protocol("http"),port("8290"),context("/stocks"))
 
