@@ -16,7 +16,9 @@ Please refer to following for more information.
 
 Use following command to run the application
 
+```
 java -jar target/stockquote-fatjar-*.jar
+```
 
 This will start a service which listen for http traffic over port 8080
 
@@ -25,7 +27,10 @@ This will start a service which listen for http traffic over port 8080
 
 Use following cURL commands.
 
+```
 curl http://localhost:8080/stockquote/IBM
+```
+
 You should get a successful response if everything worked fine.
 
 
@@ -34,5 +39,6 @@ You should get a successful response if everything worked fine.
 
 We can configure ports using  netty configuration file (Sample config files available in conf directory)
 
+```
 java -jar -Dtransports.netty.conf=netty-transports.yml target/stockquote-fatjar-*.jar
-
+```
