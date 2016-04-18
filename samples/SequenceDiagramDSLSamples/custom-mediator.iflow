@@ -1,7 +1,5 @@
 @startuml
 
-IntegrationFlow : myIntegrationFlow
-
 participant StocksInbound : InboundEndpoint(protocol("http"),port("8290"),context("/stocks"))
 
 participant StocksPipeline : Pipeline("Stocks_Flow")
