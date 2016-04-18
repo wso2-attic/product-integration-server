@@ -1,13 +1,19 @@
 @startuml
 
+var String scheme = "http"
+var Integer port = 8290
+var String context = "/sample/request"
+var String ep1 = "http://localhost:9000/services/SimpleStockQuoteService"
+var String ep2 = "http://localhost:9001/services/SimpleStockQuoteService"
+
 //This is a sample inbound endpoint
-participant sampleHTTPinbound : InboundEndpoint(protocol("http"),port("8290"),context("/sample/request"))
+participant sampleHTTPinbound : InboundEndpoint(protocol("$scheme"),port("$port"),context("$context"))
 
 participant samplePipeline : Pipeline("message_flow_1")
 
-participant sampleOutbound1 : OutboundEndpoint(protocol("http"),host("http://localhost:9000/services/SimpleStockQuoteService"))
+participant sampleOutbound1 : OutboundEndpoint(protocol("http"),host("$ep1"))
 
-participant sampleOutbound2 : OutboundEndpoint(protocol("http"),host("http://localhost:9001/services/SimpleStockQuoteService"))
+participant sampleOutbound2 : OutboundEndpoint(protocol("http"),host("$ep2"))
 
 sampleHTTPinbound -> samplePipeline : "client request"
 

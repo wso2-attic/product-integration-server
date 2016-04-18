@@ -9,12 +9,17 @@ participant sampleOutbound1 : OutboundEndpoint(protocol("http"),host("http://loc
 
 participant sampleOutbound2 : OutboundEndpoint(protocol("http"),host("http://localhost:9001/services/SimpleStockQuoteService"))
 
+var String logStatement = "I am a global variable with name 'logStatement'"
 sampleHTTPinbound -> samplePipeline : "client request"
+
+samplePipeline::log("$logStatement")
 
 samplePipeline::log("before filter statement")
 
 if with condition(source("$header.routeId"),pattern("r1"))
+    var String logStatement = "I am a local variable with name 'logStatement' inside filter mediator"
     samplePipeline::log("filter condition is true")
+    samplePipeline::log("$logStatement")
     samplePipeline -> sampleOutbound1 : "Validate policy with service 1"
     sampleOutbound1 -> samplePipeline : "Validate response from service 1"
 
@@ -25,6 +30,8 @@ else
 end
 
 samplePipeline::log("after filter statement")
+samplePipeline::log("$logStatement")
+
 
 samplePipeline -> sampleHTTPinbound : "Final Response"
 
