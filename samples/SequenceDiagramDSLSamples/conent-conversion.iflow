@@ -1,0 +1,33 @@
+@startuml
+
+participant StocksInbound : InboundEndpoint(protocol("http"),port("8290"),context("/stocks"))
+
+participant StocksPipeline : Pipeline("Stocks_Flow")
+
+participant NYSEOutbound : OutboundEndpoint(protocol("http"),host("http://localhost:8080/stockquote/all"))
+
+participant NASDAQOutbound : OutboundEndpoint(protocol("http"),host("http://localhost:8081/stockquote/all"))
+
+StocksInbound -> StocksPipeline : "client request"
+
+StocksPipeline::log("Before filter statement")
+
+if with condition(source("$header.exchange"),pattern("nyse"))
+    StocksPipeline::log("Filter condition is true")
+    StocksPipeline -> NYSEOutbound : "Request to New York Stock Exchange"
+    NYSEOutbound -> StocksPipeline : "StockQuotes from New York Stock Exchange"
+
+else
+    StocksPipeline::log("Filter condition is false")
+    StocksPipeline -> NASDAQOutbound : "Request to NASDAQ"
+    NASDAQOutbound -> StocksPipeline : "StockQuotes from NASDAQ"
+end
+
+StocksPipeline::log("After filter statement")
+
+StocksPipeline::JSONtoXMLMediator("")
+
+StocksPipeline -> StocksInbound : "Final Response"
+
+
+@enduml
