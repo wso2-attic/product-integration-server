@@ -16,7 +16,7 @@ sampleHTTPinbound -> samplePipeline : "client request"
 
 samplePipeline::SampleCustomMediator("before filter statement")
 
-alt with condition(source("$header.routeId"),pattern("r1"))
+if with condition(source("$header.routeId"),pattern("r1"))
     samplePipeline::SampleCustomMediator("filter condition is true")
     samplePipeline -> sampleOutbound1 : "Validate policy with service 1"
     sampleOutbound1 -> samplePipeline : "Validate response from service 1"
