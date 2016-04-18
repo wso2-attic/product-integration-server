@@ -1,30 +1,29 @@
 @startuml
 
-//This is a sample inbound endpoint
-participant sampleHTTPinbound : InboundEndpoint(protocol("http"),port("8290"),context("/sample/request"))
+participant StocksInbound : InboundEndpoint(protocol("http"),port("8290"),context("/stocks"))
 
-participant samplePipeline : Pipeline("message_flow_1")
+participant NYSEPipeline : Pipeline("New_York_Stock_Exchange_Flow")
 
-participant samplePipelineTwo : Pipeline("message_flow_2")
+participant NASDAQPipeline : Pipeline("NASDAQ_Message_Flow")
 
-participant sampleOutbound1 : OutboundEndpoint(protocol("http"),host("http://localhost:9000/services/SimpleStockQuoteService"))
+participant NYSEOutbound : OutboundEndpoint(protocol("http"),host("http://localhost:8080/stockquote/all"))
 
-participant sampleOutbound2 : OutboundEndpoint(protocol("http"),host("http://localhost:9001/services/SimpleStockQuoteService"))
+participant NASDAQOutbound : OutboundEndpoint(protocol("http"),host("http://localhost:8081/stockquote/all"))
 
-group name="group1", path="/path1", method="POST"
-    sampleHTTPinbound -> samplePipeline : "client request"
-    samplePipeline::log("this is path1")
-    samplePipeline -> sampleOutbound1 : "Validate policy with service 1"
-    sampleOutbound1 -> samplePipeline : "Validate response from service 1"
-    samplePipeline -> sampleHTTPinbound : "Final Response"
+group name="nyse", path="/nyse", method="GET"
+    StocksInbound -> NYSEPipeline : "client request"
+    NYSEPipeline::log("This is NYSE group")
+    NYSEPipeline -> NYSEOutbound : "Request to New York Stock Exchange"
+    NYSEOutbound -> NYSEPipeline : "StockQuotes from New York Stock Exchange"
+    NYSEPipeline -> StocksInbound : "Final Response"
 end
 
-group name="group2", path="/path2", method="POST"
-    sampleHTTPinbound -> samplePipelineTwo : "client request"
-    samplePipelineTwo::log("this is path2")
-    samplePipelineTwo -> sampleOutbound2 : "Validate policy with service 2"
-    sampleOutbound2 -> samplePipelineTwo : "Validate response from service 2"
-    samplePipelineTwo -> sampleHTTPinbound : "Final Response"
+group name="nasdaq", path="/nasdaq", method="GET"
+    StocksInbound -> NASDAQPipeline : "client request"
+    NASDAQPipeline::log("This is NASDAQ group")
+    NASDAQPipeline -> NASDAQOutbound : "Request to NASDAQ"
+    NASDAQOutbound -> NASDAQPipeline : "StockQuotes from NASDAQ"
+    NASDAQPipeline -> StocksInbound : "Final Response"
 end
 
 
