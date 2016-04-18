@@ -1,32 +1,31 @@
 @startuml
 
-//This is a sample inbound endpoint
-participant sampleHTTPinbound : InboundEndpoint(protocol("http"),port("8290"),context("/router"))
+participant StocksInbound : InboundEndpoint(protocol("http"),port("8290"),context("/stocks"))
 
-participant samplePipeline : Pipeline("message_flow_1")
+participant StocksPipeline : Pipeline("Stocks_Flow")
 
-participant sampleOutbound1 : OutboundEndpoint(protocol("http"),host("http://localhost:8080/stockquote/all"))
+participant NYSEOutbound : OutboundEndpoint(protocol("http"),host("http://localhost:8080/stockquote/all"))
 
-participant sampleOutbound2 : OutboundEndpoint(protocol("http"),host("http://localhost:8081/stockquote/all"))
+participant NASDAQOutbound : OutboundEndpoint(protocol("http"),host("http://localhost:8081/stockquote/all"))
 
-sampleHTTPinbound -> samplePipeline : "client request"
+StocksInbound -> StocksPipeline : "client request"
 
-samplePipeline::log("before filter statement")
+StocksPipeline::log("Before filter statement")
 
-if with condition(source("$header.routeId"),pattern("r1"))
-    samplePipeline::log("filter condition is true")
-    samplePipeline -> sampleOutbound1 : "Validate policy with service 1"
-    sampleOutbound1 -> samplePipeline : "Validate response from service 1"
+if with condition(source("$header.exchange"),pattern("nyse"))
+    StocksPipeline::log("Filter condition is true")
+    StocksPipeline -> NYSEOutbound : "Request to New York Stock Exchange"
+    NYSEOutbound -> StocksPipeline : "StockQuotes from New York Stock Exchange"
 
 else
-    samplePipeline::log("filter condition is false")
-    samplePipeline -> sampleOutbound2 : "Validate policy with service 2"
-    sampleOutbound2 -> samplePipeline : "Validate response from service 2"
+    StocksPipeline::log("Filter condition is false")
+    StocksPipeline -> NASDAQOutbound : "Request to NASDAQ"
+    NASDAQOutbound -> StocksPipeline : "StockQuotes from NASDAQ"
 end
 
-samplePipeline::log("after filter statement")
+StocksPipeline::log("After filter statement")
 
-samplePipeline -> sampleHTTPinbound : "Final Response"
+StocksPipeline -> StocksInbound : "Final Response"
 
 
 @enduml

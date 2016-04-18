@@ -2,37 +2,36 @@
 
 var String scheme = "http"
 var Integer port = 8290
-var String context = "/sample/request"
-var String ep1 = "http://localhost:9000/services/SimpleStockQuoteService"
-var String ep2 = "http://localhost:9001/services/SimpleStockQuoteService"
+var String context = "/stocks"
+var String ep1 = "http://localhost:8080/stockquote/all"
+var String ep2 = "http://localhost:8081/stockquote/all"
 
-//This is a sample inbound endpoint
-participant sampleHTTPinbound : InboundEndpoint(protocol("$scheme"),port("$port"),context("$context"))
+participant StocksInbound : InboundEndpoint(protocol("$scheme"),port("$port"),context("$context"))
 
-participant samplePipeline : Pipeline("message_flow_1")
+participant StocksPipeline : Pipeline("Stocks_Flow")
 
-participant sampleOutbound1 : OutboundEndpoint(protocol("http"),host("$ep1"))
+participant NYSEOutbound : OutboundEndpoint(protocol("http"),host("$ep1"))
 
-participant sampleOutbound2 : OutboundEndpoint(protocol("http"),host("$ep2"))
+participant NASDAQOutbound : OutboundEndpoint(protocol("http"),host("$ep2"))
 
-sampleHTTPinbound -> samplePipeline : "client request"
+StocksInbound -> StocksPipeline : "client request"
 
-samplePipeline::log("before filter statement")
+StocksPipeline::log("before filter statement")
 
-if with condition(source("$header.routeId"),pattern("r1"))
-    samplePipeline::log("filter condition is true")
-    samplePipeline -> sampleOutbound1 : "Validate policy with service 1"
-    sampleOutbound1 -> samplePipeline : "Validate response from service 1"
+if with condition(source("$header.exchange"),pattern("nyse"))
+    StocksPipeline::log("Filter condition is true")
+    StocksPipeline -> NYSEOutbound : "Request to New York Stock Exchange"
+    NYSEOutbound -> StocksPipeline : "StockQuotes from New York Stock Exchange"
 
 else
-    samplePipeline::log("filter condition is false")
-    samplePipeline -> sampleOutbound2 : "Validate policy with service 2"
-    sampleOutbound2 -> samplePipeline : "Validate response from service 2"
+    StocksPipeline::log("Filter condition is false")
+    StocksPipeline -> NASDAQOutbound : "Request to NASDAQ"
+    NASDAQOutbound -> StocksPipeline : "StockQuotes from NASDAQ"
 end
 
-samplePipeline::log("after filter statement")
+StocksPipeline::log("after filter statement")
 
-samplePipeline -> sampleHTTPinbound : "Final Response"
+StocksPipeline -> StocksInbound : "Final Response"
 
 
 @enduml

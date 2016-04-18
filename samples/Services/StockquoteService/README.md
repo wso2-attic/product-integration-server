@@ -17,7 +17,7 @@ Please refer to following for more information.
 Use following command to run the application
 
 ```
-java -jar target/stockquote-fatjar-*.jar
+java -jar stockquote-fatjar-*.jar
 ```
 
 This will start a service which listen for http traffic over port 8080
@@ -40,5 +40,5 @@ You should get a successful response if everything worked fine.
 We can configure ports using  netty configuration file (Sample config files available in conf directory)
 
 ```
-java -jar -Dtransports.netty.conf=conf/netty-8080.yml stockquote-fatjar-*.jar
+java -jar -Dtransports.netty.conf=conf/netty-8081.yml stockquote-fatjar-*.jar
 ```
