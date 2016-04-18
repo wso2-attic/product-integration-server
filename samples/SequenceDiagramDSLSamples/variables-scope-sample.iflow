@@ -1,0 +1,42 @@
+@startuml
+
+#Defining variable sample integration flow
+variablesSampleIntegrationFlow : IntegrationFlow
+
+//This is a sample inbound endpoint
+participant sampleHTTPinbound : InboundEndpoint(protocol("http"),port("8290"),context("/sample/request"))
+
+participant samplePipeline : Pipeline("message_flow_1")
+
+participant sampleOutbound1 : OutboundEndpoint(protocol("http://localhost:9001/services/SimpleStockQuoteService"),host("$ep1"))
+
+participant sampleOutbound2 : OutboundEndpoint(protocol("http://localhost:9001/services/SimpleStockQuoteService"),host("$ep2"))
+
+var String logStatement = "I am a global variable called 'logStatement'"
+
+sampleHTTPinbound -> samplePipeline comment "client request"
+
+samplePipeline::log("$logStatement")
+
+var String filterLog = "About to enter filter" 
+samplePipeline::log("$filterLog")
+alt with condition(source("$header.routeId"),pattern("r1"))
+    var String logStatement = "I am a lexically scoped variable inside a filter called 'logStatement'"
+    samplePipeline::log("$logStatement")
+    $filterLog = "Header routeId is r1"
+    samplePipeline -> sampleOutbound1 comment "Validate policy with service 1"
+    sampleOutbound1 -> samplePipeline comment "Validate response from service 1"
+else
+    $filterLog = "Header routeId is NOT r1"
+    samplePipeline::log("filter condition is false")
+    samplePipeline -> sampleOutbound2 comment "Validate policy with service 2"
+    sampleOutbound2 -> samplePipeline comment "Validate response from service 2"
+end
+
+samplePipeline::log("$filterLog")
+samplePipeline::log("$logStatement")
+
+samplePipeline -> sampleHTTPinbound comment "Final Response"
+
+
+@enduml
