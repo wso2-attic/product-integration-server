@@ -25,15 +25,3 @@ listenerConfigurations:
     -
      name: "execThreadPoolSize"
      value: 60
-
- -
-  id: "msf4j-https"
-  host: "127.0.0.1"
-  port: 8443
-  bossThreadPoolSize: 2
-  workerThreadPoolSize: 250
-  execHandlerThreadPoolSize: 60
-  scheme: https
-  keyStoreFile: "conf/wso2carbon.jks"
-  keyStorePass: wso2carbon
-  certPass: wso2carbon

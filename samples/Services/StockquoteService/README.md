@@ -40,5 +40,5 @@ You should get a successful response if everything worked fine.
 We can configure ports using  netty configuration file (Sample config files available in conf directory)
 
 ```
-java -jar -Dtransports.netty.conf=netty-transports.yml target/stockquote-fatjar-*.jar
+java -jar -Dtransports.netty.conf=conf/netty-8080.yml stockquote-fatjar-*.jar
 ```
