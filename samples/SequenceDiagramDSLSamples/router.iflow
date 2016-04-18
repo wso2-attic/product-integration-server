@@ -1,13 +1,13 @@
 @startuml
 
 //This is a sample inbound endpoint
-participant sampleHTTPinbound : InboundEndpoint(protocol("http"),port("8290"),context("/sample/request"))
+participant sampleHTTPinbound : InboundEndpoint(protocol("http"),port("8290"),context("/router"))
 
 participant samplePipeline : Pipeline("message_flow_1")
 
-participant sampleOutbound1 : OutboundEndpoint(protocol("http"),host("http://localhost:9000/services/SimpleStockQuoteService"))
+participant sampleOutbound1 : OutboundEndpoint(protocol("http"),host("http://localhost:8080/stockquote/all"))
 
-participant sampleOutbound2 : OutboundEndpoint(protocol("http"),host("http://localhost:9001/services/SimpleStockQuoteService"))
+participant sampleOutbound2 : OutboundEndpoint(protocol("http"),host("http://localhost:8081/stockquote/all"))
 
 sampleHTTPinbound -> samplePipeline : "client request"
 
