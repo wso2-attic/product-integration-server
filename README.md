@@ -23,24 +23,24 @@ participant sampleOutbound1 : OutboundEndpoint(protocol("http"),host("http://loc
 
 participant sampleOutbound2 : OutboundEndpoint(protocol("http"),host("http://localhost:9001/services/SimpleStockQuoteService"))
 
-sampleHTTPinbound -> samplePipeline comment "client request"
+sampleHTTPinbound -> samplePipeline : "client request"
 
 samplePipeline::log("before filter statement")
 
 alt with condition(source("$header.routeId"),pattern("r1"))
     samplePipeline::log("filter condition is true")
-    samplePipeline -> sampleOutbound1 comment "Validate policy with service 1"
-    sampleOutbound1 -> samplePipeline comment "Validate response from service 1"
+    samplePipeline -> sampleOutbound1 : "Validate policy with service 1"
+    sampleOutbound1 -> samplePipeline : "Validate response from service 1"
 
 else
     samplePipeline::log("filter condition is false")
-    samplePipeline -> sampleOutbound2 comment "Validate policy with service 2"
-    sampleOutbound2 -> samplePipeline comment "Validate response from service 2"
+    samplePipeline -> sampleOutbound2 : "Validate policy with service 2"
+    sampleOutbound2 -> samplePipeline : "Validate response from service 2"
 end
 
 samplePipeline::log("after filter statement")
 
-samplePipeline -> sampleHTTPinbound comment "Final Response"
+samplePipeline -> sampleHTTPinbound : "Final Response"
 
 
 @enduml
