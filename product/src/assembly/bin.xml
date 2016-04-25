@@ -52,6 +52,11 @@
             <fileMode>644</fileMode>
         </fileSet>
         <fileSet>
+            <directory>carbon-home/conf/engine</directory>
+            <outputDirectory>conf/engine</outputDirectory>
+            <fileMode>644</fileMode>
+        </fileSet>
+        <fileSet>
             <directory>carbon-home/conf/osgi</directory>
             <outputDirectory>conf/osgi</outputDirectory>
             <fileMode>644</fileMode>
