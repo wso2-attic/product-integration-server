@@ -25,7 +25,7 @@
 
     <fileSets>
         <fileSet>
-            <directory>target/wso2carbon-kernel-${carbon.kernel.version}</directory>
+            <directory>target/wso2carbon-kernel-${carbon.kernel.product.version}</directory>
             <outputDirectory>.</outputDirectory>
             <excludes>
                 <exclude>README.txt</exclude>
@@ -49,6 +49,11 @@
         <fileSet>
             <directory>carbon-home/conf/transports</directory>
             <outputDirectory>conf/transports</outputDirectory>
+            <fileMode>644</fileMode>
+        </fileSet>
+        <fileSet>
+            <directory>carbon-home/conf/engine</directory>
+            <outputDirectory>conf/engine</outputDirectory>
             <fileMode>644</fileMode>
         </fileSet>
         <fileSet>
