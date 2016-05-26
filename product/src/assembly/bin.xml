@@ -25,7 +25,7 @@
 
     <fileSets>
         <fileSet>
-            <directory>target/wso2carbon-kernel-${carbon.kernel.version}</directory>
+            <directory>target/wso2carbon-kernel-${carbon.kernel.product.version}</directory>
             <outputDirectory>.</outputDirectory>
             <excludes>
                 <exclude>README.txt</exclude>
