@@ -173,6 +173,28 @@
                 <artifactId>org.wso2.carbon.gateway.converters.jsontoxml.feature</artifactId>
                 <version>${carbon.gw.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.wso2.carbon.gateway</groupId>
+                <artifactId>org.wso2.carbon.gateway.message.readers.jsonreader</artifactId>
+                <version>${carbon.gw.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.wso2.carbon.gateway</groupId>
+                <artifactId>org.wso2.carbon.gateway.message.readers.jsonreader.feature</artifactId>
+                <version>${carbon.gw.version}</version>
+                <type>zip</type>
+            </dependency>
+            <dependency>
+                <groupId>org.wso2.carbon.gateway</groupId>
+                <artifactId>org.wso2.carbon.gateway.message.readers.xmlreader</artifactId>
+                <version>${carbon.gw.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.wso2.carbon.gateway</groupId>
+                <artifactId>org.wso2.carbon.gateway.message.readers.xmlreader.feature</artifactId>
+                <version>${carbon.gw.version}</version>
+                <type>zip</type>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
