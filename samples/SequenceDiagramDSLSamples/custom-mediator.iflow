@@ -13,12 +13,12 @@ StocksInbound -> StocksPipeline : "client request"
 StocksPipeline::SampleCustomMediator("Before filter statement")
 
 if with condition(source("$header.exchange"),pattern("nyse"))
-    StocksPipeline::log("Filter condition is true")
+    StocksPipeline::log(level("CUSTOM"),category("INFO"),property(key("XXX"),value("filter  statement true")))
     StocksPipeline -> NYSEOutbound : "Request to New York Stock Exchange"
     NYSEOutbound -> StocksPipeline : "StockQuotes from New York Stock Exchange"
 
 else
-    StocksPipeline::log("Filter condition is false")
+    StocksPipeline::log(level("CUSTOM"),category("INFO"),property(key("XXX"),value("filter  statement false")))
     StocksPipeline -> NASDAQOutbound : "Request to NASDAQ"
     NASDAQOutbound -> StocksPipeline : "StockQuotes from NASDAQ"
 end

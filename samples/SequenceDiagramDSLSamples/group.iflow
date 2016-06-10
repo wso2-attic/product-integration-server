@@ -12,7 +12,7 @@ participant NASDAQOutbound : OutboundEndpoint(protocol("http"),host("http://loca
 
 group name="nyse", path="/nyse", method="GET"
     StocksInbound -> NYSEPipeline : "client request"
-    NYSEPipeline::log("This is NYSE group")
+    NYSEPipeline::log(level("CUSTOM"),category("INFO"),property(key("XXX"),value("This is NYSE")))
     NYSEPipeline -> NYSEOutbound : "Request to New York Stock Exchange"
     NYSEOutbound -> NYSEPipeline : "StockQuotes from New York Stock Exchange"
     NYSEPipeline -> StocksInbound : "Final Response"
@@ -20,7 +20,7 @@ end
 
 group name="nasdaq", path="/nasdaq", method="GET"
     StocksInbound -> NASDAQPipeline : "client request"
-    NASDAQPipeline::log("This is NASDAQ group")
+    NASDAQPipeline::log(level("CUSTOM"),category("INFO"),property(key("XXX"),value("This is NASDAQ group")))
     NASDAQPipeline -> NASDAQOutbound : "Request to NASDAQ"
     NASDAQOutbound -> NASDAQPipeline : "StockQuotes from NASDAQ"
     NASDAQPipeline -> StocksInbound : "Final Response"

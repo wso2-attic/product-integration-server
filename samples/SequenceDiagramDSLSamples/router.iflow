@@ -10,20 +10,20 @@ participant NASDAQOutbound : OutboundEndpoint(protocol("http"),host("http://loca
 
 StocksInbound -> StocksPipeline : "client request"
 
-StocksPipeline::log("Before filter statement")
+StocksPipeline::log(level("CUSTOM"),category("INFO"),property(key("XXX"),value("Before filter statement")))
 
 if with condition(source("$header.exchange"),pattern("nyse"))
-    StocksPipeline::log("Filter condition is true")
+    StocksPipeline::log(level("CUSTOM"),category("INFO"),property(key("XXX"),value("filter  statement true")))
     StocksPipeline -> NYSEOutbound : "Request to New York Stock Exchange"
     NYSEOutbound -> StocksPipeline : "StockQuotes from New York Stock Exchange"
 
 else
-    StocksPipeline::log("Filter condition is false")
+    StocksPipeline::log(level("CUSTOM"),category("INFO"),property(key("XXX"),value("filter  statement false")))
     StocksPipeline -> NASDAQOutbound : "Request to NASDAQ"
     NASDAQOutbound -> StocksPipeline : "StockQuotes from NASDAQ"
 end
 
-StocksPipeline::log("After filter statement")
+StocksPipeline::log(level("CUSTOM"),category("INFO"),property(key("XXX"),value("After filter statement")))
 
 StocksPipeline -> StocksInbound : "Final Response"
 

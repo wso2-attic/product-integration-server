@@ -12,25 +12,25 @@ var String logStatement = "I am a global variable with name 'logStatement'"
 
 StocksInbound -> StocksPipeline : "client request"
 
-StocksPipeline::log("$logStatement")
+StocksPipeline::log(level("CUSTOM"),category("INFO"),property(key("XXX"),value("$logStatement")))
 
-StocksPipeline::log("before filter statement")
+StocksPipeline::log(level("CUSTOM"),category("INFO"),property(key("XXX"),value("Before filter statement")))
 
 if with condition(source("$header.exchange"),pattern("nyse"))
     var String logStatement = "I am a local variable with name 'logStatement' inside filter mediator"
-    StocksPipeline::log("Filter condition is true")
-    StocksPipeline::log("$logStatement")
+    StocksPipeline::log(level("CUSTOM"),category("INFO"),property(key("XXX"),value("filter  statement true")))
+    StocksPipeline::log(level("CUSTOM"),category("INFO"),property(key("XXX"),value("$logStatement")))
     StocksPipeline -> NYSEOutbound : "Request to New York Stock Exchange"
     NYSEOutbound -> StocksPipeline : "StockQuotes from New York Stock Exchange"
 
 else
-    StocksPipeline::log("Filter condition is false")
+    StocksPipeline::log(level("CUSTOM"),category("INFO"),property(key("XXX"),value("filter  statement false")))
     StocksPipeline -> NASDAQOutbound : "Request to NASDAQ"
     NASDAQOutbound -> StocksPipeline : "StockQuotes from NASDAQ"
 end
 
-StocksPipeline::log("After filter statement")
-StocksPipeline::log("$logStatement")
+StocksPipeline::log(level("CUSTOM"),category("INFO"),property(key("XXX"),value("After  filter statement")))
+StocksPipeline::log(level("CUSTOM"),category("INFO"),property(key("XXX"),value("$logStatement")))
 
 
 StocksPipeline -> StocksInbound : "Final Response"
