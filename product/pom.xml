@@ -79,6 +79,12 @@
             <type>zip</type>
         </dependency>
         <dependency>
+            <groupId>org.wso2.carbon.transport</groupId>
+            <artifactId>org.wso2.carbon.transport.http.netty.statistics.feature</artifactId>
+            <version>${carbon.transport.version}</version>
+            <type>zip</type>
+        </dependency>
+        <dependency>
             <groupId>org.wso2.carbon.messaging</groupId>
             <artifactId>org.wso2.carbon.messaging.feature</artifactId>
             <version>${carbon.messaging.version}</version>
@@ -136,6 +142,14 @@
             <version>${carbon.gw.version}</version>
             <type>zip</type>
         </dependency>
+
+        <dependency>
+            <groupId>org.wso2.carbon.metrics</groupId>
+            <artifactId>org.wso2.carbon.metrics.core.feature</artifactId>
+            <version>${carbon.metrics.version}</version>
+            <type>zip</type>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -197,6 +211,10 @@
                                     <version>${carbon.transport.version}</version>
                                 </feature>
                                 <feature>
+                                    <id>org.wso2.carbon.transport.http.netty.statistics.feature</id>
+                                    <version>${carbon.transport.version}</version>
+                                </feature>
+                                <feature>
                                     <id>org.wso2.carbon.messaging.feature</id>
                                     <version>${carbon.messaging.version}</version>
                                 </feature>
@@ -235,6 +253,10 @@
                                 <feature>
                                     <id>org.wso2.carbon.gateway.message.readers.xmlreader.feature</id>
                                     <version>${carbon.gw.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.metrics.core.feature</id>
+                                    <version>${carbon.metrics.version}</version>
                                 </feature>
                             </features>
                         </configuration>
@@ -298,6 +320,10 @@
                                 </feature>
                                 <feature>
                                     <id>org.wso2.carbon.transport.http.netty.feature.group</id>
+                                    <version>${carbon.transport.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.transport.http.netty.statistics.feature.group</id>
                                     <version>${carbon.transport.version}</version>
                                 </feature>
                                 <feature>
