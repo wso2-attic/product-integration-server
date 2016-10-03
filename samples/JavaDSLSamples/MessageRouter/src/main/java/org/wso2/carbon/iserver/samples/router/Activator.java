@@ -20,14 +20,13 @@ package org.wso2.carbon.iserver.samples.router;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
-import org.wso2.carbon.gateway.core.config.dsl.internal.JavaConfigurationBuilder;
 
 /**
  * Bundle Activator
  */
 public class Activator implements BundleActivator {
     public void start(BundleContext bundleContext) throws Exception {
-        bundleContext.registerService(JavaConfigurationBuilder.class, new MessageRouter(), null);
+//        bundleContext.registerService(JavaConfigurationBuilder.class, new MessageRouter(), null);
     }
 
     public void stop(BundleContext bundleContext) throws Exception {
