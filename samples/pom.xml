@@ -30,8 +30,5 @@
     <packaging>pom</packaging>
     <name>WSO2 Integration Server - Samples Module</name>
     <url>http://wso2.org</url>
-    <modules>
-        <module>JavaDSLSamples/MessageRouter</module>
-        <module>JavaDSLSamples/CustomLogger</module>
-    </modules>
+    <modules/>
 </project>
