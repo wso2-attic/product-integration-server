@@ -223,7 +223,7 @@
         <slf4j.logging.package.import.version.range>[1.7.1, 2.0.0)</slf4j.logging.package.import.version.range>
         <!--TODO: Check why we need to depend on SNAPSHOT -->
 
-        <carbon.transport.version>2.1.6</carbon.transport.version>
+        <carbon.transport.version>2.1.8-SNAPSHOT</carbon.transport.version>
         <carbon.transport.package.import.version.range>[2.0.0, 2.2.0)</carbon.transport.package.import.version.range>
 
         <carbon.messaging.version>1.0.8-SNAPSHOT</carbon.messaging.version>
