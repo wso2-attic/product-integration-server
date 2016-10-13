@@ -13,6 +13,7 @@ constant endpoint stockEP = new HTTPEndPoint("http://localhost:8080/stockquote/a
 @POST
 @Path("/passthrough")
 resource passthrough(message m) {
+    message response;
     log("Message Received...");
     if (eval("$header.exchange", m) == "NYSE") {
         if (eval("$header.sub.exchange", m) == "ONE") {
@@ -28,5 +29,6 @@ resource passthrough(message m) {
         }
     }
     log("Message sent to Endpoint...");
-    reply invoke(stockEP, m);
+    response = invoke(stockEP, m);
+    reply response;
 }
