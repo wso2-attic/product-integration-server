@@ -29,6 +29,6 @@ resource passthrough(message m) {
         }
     }
     log("Message sent to Endpoint...");
-    response = invoke(stockEP, m);
+    response = invoke(endpointKey=stockEP, messageKey=m);
     reply response;
 }
