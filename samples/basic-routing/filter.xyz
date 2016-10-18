@@ -14,21 +14,21 @@ constant endpoint stockEP = new HTTPEndPoint("http://localhost:8080/stockquote/a
 @Path("/passthrough")
 resource passthrough(message m) {
     message response;
-    log("Message Received...");
+    log(level="custom", status="Message Received...");
     if (eval("$header.exchange", m) == "NYSE") {
         if (eval("$header.sub.exchange", m) == "ONE") {
-            log("Exchange NYSE, sub-exchange ONE");
+            log(level="custom", status="Exchange NYSE, sub-exchange ONE");
         } else {
-            log("Exchange NYSE, sub-exchange not ONE");
+            log(level="custom", status="Exchange NYSE, sub-exchange not ONE");
         }
     } else {
         if (eval("$header.sub.exchange", m) == "ONE") {
-            log("Exchange not NYSE, sub-exchange ONE");
+            log(level="custom", status="Exchange not NYSE, sub-exchange ONE");
         } else {
-            log("Exchange not NYSE, sub-exchange not ONE");
+            log(level="custom", status="Exchange not NYSE, sub-exchange not ONE");
         }
     }
-    log("Message sent to Endpoint...");
-    response = invoke(stockEP, m);
+    log(level="custom", status="Message sent to Endpoint...");
+    response = invoke(endpointKey=stockEP, messageKey=m);
     reply response;
 }

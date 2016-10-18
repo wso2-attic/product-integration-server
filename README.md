@@ -26,7 +26,7 @@ constant endpoint stockEP = new HTTPEndPoint("http://localhost:8081/stockquote/W
 @Path ("/passthrough")
 resource passthrough (message m) {
     message response;
-    response = invoke(stockEP, m);
+    response = invoke(endpointKey=stockEP, messageKey=m);
     reply response;
 }
 ```
