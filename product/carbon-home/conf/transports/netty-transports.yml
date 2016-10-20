@@ -53,15 +53,18 @@ transportProperties:
  -
   name: "header.validation.reject.message.content.type"
   value: "plain/text"
+ -
+  name: "server.bootstrap.boss.group.size"
+  value: 4
+ -
+  name: "server.bootstrap.worker.group.size"
+  value: 8
 listenerConfigurations:
  -
   id: "netty-gw"
   host: "0.0.0.0"
   port: 9090
-  bossThreadPoolSize: 4
-  workerThreadPoolSize: 8
-  execHandlerThreadPoolSize: 60
-  enableDisruptor: "true"
+  enableDisruptor: "false"
   parameters:
     -
      name: "disruptor.wait.strategy"
