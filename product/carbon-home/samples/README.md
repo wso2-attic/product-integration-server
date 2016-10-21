@@ -4,6 +4,16 @@
 Running Samples
 ---------------
 
+To start the WSO2 Integration server with a selected sample configuration
+
+* Open a shell in Linux and go to the <CARBON_HOME>\bin directory.
+* Execute one of the following commands,  where <file_name> denotes the configuration file name.
+  On Linux/Solaris/Mac: ./run-sample.sh -sn <file_name>
+
+For example, to start the Integration server with the passthrough sample configuration on Linux/Solaris/Mac, run the following command:
+./run-sample.sh passthrough.xyz
+
+
 Configuration can be deployed to server by dropping any sample configuration file from <CARBON_HOME>/samples/integration-flows/
 to <CARBON_HOME>/deployment/integration-flows/ directory.
 
