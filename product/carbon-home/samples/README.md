@@ -14,7 +14,7 @@ For example, to start the Integration server with the passthrough sample configu
 ./run-sample.sh passthrough.xyz
 
 
-Configuration can be deployed to server by dropping any sample configuration file from <CARBON_HOME>/samples/integration-flows/
+Also configuration can be manually deployed to server by dropping any sample configuration file from <CARBON_HOME>/samples/integration-flows/
 to <CARBON_HOME>/deployment/integration-flows/ directory.
 
 MSF4J SimpleStockQuote fat jar sample is used as the backend service for the integration flow samples. Follow the instruction in the
