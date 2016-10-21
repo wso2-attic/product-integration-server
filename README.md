@@ -1,4 +1,4 @@
-# Welcome to WSO2 Integration (Ballerina)
+# WSO2 Integration (Ballerina)
 
 WSO2 Integration a.k.a Ballerina is the platform for building services and integrations using sequence diagram like visual representation.
 
