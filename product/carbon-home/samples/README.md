@@ -4,11 +4,11 @@
 Running Samples
 ---------------
 
-Configuration can be deployed to server by dropping any sample configuration file in <CARBON_HOME>/samples/integration-flows/
+Configuration can be deployed to server by dropping any sample configuration file from <CARBON_HOME>/samples/integration-flows/
 to <CARBON_HOME>/deployment/integration-flows/ directory.
 
-MSF4J SimpleStockQuote fat jar sample is used as the backend service for the integration flow samples. Follow the instruction of the
-README.md of Stockquote service resides in <CARBON_HOME>/samples/Services/StockquoteService/ to start the backend service.
+MSF4J SimpleStockQuote fat jar sample is used as the backend service for the integration flow samples. Follow the instruction in the
+README.md resides in <CARBON_HOME>/samples/Services/StockquoteService/ to start the backend service.
 
 
 How to test the sample
