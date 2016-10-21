@@ -1,0 +1,34 @@
+@Path("/stock")
+@Source(interface="default")
+@Api(tags = {
+    "stock_info",
+    "stock_update"
+}, description = "Rest api for do operations on admin", produces = MediaType.APPLICATION_JSON)
+package com.sample;
+
+constant endpoint stockEP = new EndPoint("http://localhost:8080/stockquote/all");
+
+@GET
+@PUT
+@POST
+@Path("/passthrough")
+resource passthrough(message m) {
+    message response;
+    log(level="custom", status="Message Received...");
+    if (eval("$header.exchange", m) == "NYSE") {
+        if (eval("$header.sub.exchange", m) == "ONE") {
+            log(level="custom", status="Exchange NYSE, sub-exchange ONE");
+        } else {
+            log(level="custom", status="Exchange NYSE, sub-exchange not ONE");
+        }
+    } else {
+        if (eval("$header.sub.exchange", m) == "ONE") {
+            log(level="custom", status="Exchange not NYSE, sub-exchange ONE");
+        } else {
+            log(level="custom", status="Exchange not NYSE, sub-exchange not ONE");
+        }
+    }
+    log(level="custom", status="Message sent to Endpoint...");
+    response = invoke(endpointKey=stockEP, messageKey=m);
+    reply response;
+}

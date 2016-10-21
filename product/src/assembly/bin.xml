@@ -79,6 +79,14 @@
                 <exclude>empty.txt</exclude>
             </excludes>
         </fileSet>
+        <fileSet>
+            <directory>carbon-home/samples/scripts</directory>
+            <outputDirectory>bin</outputDirectory>
+            <includes>
+                <include>run-sample.sh</include>
+            </includes>
+            <fileMode>755</fileMode>
+        </fileSet>
     </fileSets>
 
     <files>
