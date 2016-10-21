@@ -1,5 +1,5 @@
 @Path("/stock")
-@Source(protocol = "http", host = "localhost", port = 8280)
+@Source(interface="default")
 @Api(tags = {
     "stock_info",
     "stock_update"
