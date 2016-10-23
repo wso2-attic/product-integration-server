@@ -1,6 +1,6 @@
-# WSO2 Integration (Ballerina)
+# WSO2 Integration
 
-WSO2 Integration a.k.a Ballerina is the platform for building services and integrations using sequence diagram like visual representation.
+WSO2 Integration is the platform for building services and integrations using sequence diagram like visual representation.
 
 # Introduction
 
@@ -20,7 +20,6 @@ WSO2 Integration is an ultra high performance, lightweight, configuration-driven
 
 * Lightweight and stateless service orchestration.
 
-* Error handling support. 
 
 # Getting Started
 
@@ -29,12 +28,12 @@ WSO2 Integration is an ultra high performance, lightweight, configuration-driven
 1) Sample integrations can be found at [CARBON_HOME]/samples/integration-flows directory. Select the passthrough.ballerina file and copy that to [CARBON_HOME]/deployment/integration-flows directory. 
 
 ```sh
-@Path("/stock")
+@Path("/stocks")
 @Source(interface="default")
 @Api(tags = {
     "stock_info",
     "stock_update"
-}, description = "Rest api for do operations on admin", produces = MediaType.APPLICATION_JSON)
+}, description = "Rest api for get stocks details", produces = MediaType.APPLICATION_JSON)
 package com.sample;
 
 constant endpoint stockEP = new EndPoint("http://localhost:8080/stockquote/all");
@@ -42,7 +41,7 @@ constant endpoint stockEP = new EndPoint("http://localhost:8080/stockquote/all")
 @GET
 @PUT
 @POST
-@Path("/passthrough")
+@Path("/getStocks")
 resource passthrough(message m) {
     message response;
     response = invoke(endpointKey=stockEP, messageKey=m);
@@ -59,7 +58,7 @@ java -jar stockquote-fatjar-*.jar
 
 4) Now your integration service and the backend is started and you can invoke the service using the following curl command
 ```sh
-curl -v http://localhost:9090/stockquote/IBM
+curl -v http://localhost:9090/stocks/getStocks
 ```
 
 5) You should get the following result from the service
