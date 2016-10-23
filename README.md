@@ -26,7 +26,7 @@ WSO2 Integration is an ultra high performance, lightweight, configuration-driven
 
 ## Start with samples
 
-1) Sample integrations can be found at [CARBON_HOME]/samples/integration-flows directory. Select the passthrough.xyz file and copy that to [CARBON_HOME]/deployment/integration-flows directory. 
+1) Sample integrations can be found at [CARBON_HOME]/samples/integration-flows directory. Select the passthrough.ballerina file and copy that to [CARBON_HOME]/deployment/integration-flows directory. 
 
 ```sh
 @Path("/stock")
