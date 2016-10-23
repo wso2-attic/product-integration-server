@@ -33,7 +33,7 @@
 # ----- Process the input command ----------------------------------------------
 if [ ! -f ../samples/integration-flows/$1 ]; then
     echo "*** Specified sample configuration file name is not found *** Please specify a correct file name"
-    echo "Example, to run sample passthrough.xyz use command as follows: ./run-sample.sh passthrough.xyz"
+    echo "Example, to run sample passthrough.ballerina use command as follows: ./run-sample.sh passthrough.ballerina"
     exit
 else
   SAMPLE_FILE_NAME=$1
