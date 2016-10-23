@@ -26,6 +26,6 @@ How to test the sample
 
 Use following cURL commands.
 
-curl http://localhost:9090/stock/passthrough
+curl http://localhost:9090/stocks/getStocks
 
 You should get a successful response according the sample configurations if everything worked fine.
