@@ -20,12 +20,12 @@
     <parent>
         <groupId>org.wso2.carbon.iserver</groupId>
         <artifactId>org.wso2.carbon.iserver.parent</artifactId>
-        <version>1.0.0-M0</version>
+        <version>1.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <version>1.0.0-M0</version>
+    <version>1.0.1-SNAPSHOT</version>
     <artifactId>org.wso2.carbon.iserver.samples</artifactId>
     <packaging>pom</packaging>
     <name>WSO2 Integration Server - Samples Module</name>
