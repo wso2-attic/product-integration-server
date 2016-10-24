@@ -11,7 +11,7 @@ constant endpoint stockEP = new EndPoint("http://localhost:8080/stockquote/all")
 @GET
 @PUT
 @POST
-@Path("/getStocks")
+@Path("/getStocksWithHeader")
 resource filter(message m) {
     message response;
     log(level="custom", status="Message Received...");
