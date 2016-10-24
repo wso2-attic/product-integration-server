@@ -31,13 +31,13 @@
 # -----------------------------------------------------------------------------
 
 # ----- Process the input command ----------------------------------------------
-if [ ! -f ../samples/integration-flows/$1 ]; then
+if [ ! -f ../samples/basic-routing/$1 ]; then
     echo "*** Specified sample configuration file name is not found *** Please specify a correct file name"
     echo "Example, to run sample passthrough.ballerina use command as follows: ./run-sample.sh passthrough.ballerina"
     exit
 else
   SAMPLE_FILE_NAME=$1
-  cp -r ../samples/integration-flows/$1 ../deployment/integration-flows/
+  cp -r ../samples/basic-routing/$1 ../deployment/integration-flows/
 fi
 
 sh carbon.sh

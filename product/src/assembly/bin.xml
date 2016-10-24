@@ -67,8 +67,20 @@
             <fileMode>644</fileMode>
         </fileSet>
         <fileSet>
-            <directory>carbon-home/samples</directory>
+            <directory>../samples</directory>
             <outputDirectory>samples</outputDirectory>
+            <excludes>
+                <exclude>target/**</exclude>
+                <exclude>scripts/**</exclude>
+                <exclude>pom.xml</exclude>
+                <exclude>README.txt</exclude>
+                <exclude>LICENSE.txt</exclude>
+                <exclude>release-notes.html</exclude>
+                <exclude>**/*.ipr</exclude>
+                <exclude>**/*.iwr</exclude>
+                <exclude>**/*.eclipse</exclude>
+                <exclude>**/*.iml</exclude>
+            </excludes>
             <fileMode>644</fileMode>
         </fileSet>
         <fileSet>
@@ -80,7 +92,7 @@
             </excludes>
         </fileSet>
         <fileSet>
-            <directory>carbon-home/samples/scripts</directory>
+            <directory>../samples/scripts</directory>
             <outputDirectory>bin</outputDirectory>
             <includes>
                 <include>run-sample.sh</include>
