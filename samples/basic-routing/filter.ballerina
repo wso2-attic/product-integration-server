@@ -1,4 +1,4 @@
-@Path("/stocks")
+@Path("/commonStocks")
 @Source(interface="default")
 @Service(tags = {
     "stock_info",
