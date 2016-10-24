@@ -32,9 +32,9 @@
     <name>WSO2 Carbon - Product Integration Server Parent</name>
 
     <scm>
-        <url>https://github.com/isudana/product-integration-server.git</url>
-        <developerConnection>scm:git:https://github.com/isudana/product-integration-server.git</developerConnection>
-        <connection>scm:git:https://github.com/isudana/product-integration-server.git</connection>
+        <url>https://github.com/wso2/product-integration-server.git</url>
+        <developerConnection>scm:git:https://github.com/wso2/product-integration-server.git</developerConnection>
+        <connection>scm:git:https://github.com/wso2/product-integration-server.git</connection>
         <tag>HEAD</tag>
     </scm>
 
