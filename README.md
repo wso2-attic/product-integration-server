@@ -30,7 +30,7 @@ WSO2 Integration is an ultra high performance, lightweight, configuration-driven
 ```sh
 @Path("/stocks")
 @Source(interface="default")
-@Api(tags = {
+@Service(tags = {
     "stock_info",
     "stock_update"
 }, description = "Rest api for get stocks details", produces = MediaType.APPLICATION_JSON)
@@ -44,7 +44,7 @@ constant endpoint stockEP = new EndPoint("http://localhost:8080/stockquote/all")
 @Path("/getStocks")
 resource passthrough(message m) {
     message response;
-    response = invoke(endpointKey=stockEP, messageKey=m);
+    response = invoke(endpointRef=stockEP, messageRef=m);
     reply response;
 }
 ```
