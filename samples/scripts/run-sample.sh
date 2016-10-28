@@ -15,9 +15,9 @@
 #  limitations under the License.
 
 # ----------------------------------------------------------------------------
-# Script for runnig the WSO2 Integration samples
+# Script for running the WSO2 Integration samples
 #
-# Environment Variable Prequisites
+# Environment Variable Prerequisites
 #
 #   CARBON_HOME   Home of WSO2 Carbon installation. If not set I will  try
 #                   to figure it out.
