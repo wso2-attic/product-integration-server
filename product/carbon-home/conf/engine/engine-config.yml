@@ -48,4 +48,4 @@ disruptorConfigurations:
 threadPoolConfigurations:
  -
   noOfThreads: 20
-  enable: false
+  enable: true
