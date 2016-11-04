@@ -2,7 +2,7 @@
 
 service=$1
 fileName=""
-conLevels="100"
+conLevels="1 10 50 100 200 400 800 1600 3200"
 if [ -z $2 ]; then
     fileName="latency-results.csv"
 else

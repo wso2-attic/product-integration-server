@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 baseDir=$(dirname "$0")
-concLevels="50 100"
+concLevels="1 10 25 50 100 200 400 800 1600 3200"
 mSizes="1024 10240 51200 102400"
 mode="IServer"
 service="http://localhost:9090/stocks/getStocks"
@@ -30,9 +30,6 @@ function printResultStructures(){
 function hash(){
     echo -n $1 | md5sum | awk '{print $1}'
 }
-
-
-
 
 function processResults(){
     local metric=$1
