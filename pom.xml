@@ -224,7 +224,7 @@
         <!--TODO: Check why we need to depend on SNAPSHOT -->
 
 
-        <carbon.transport.version>2.1.12-SNAPSHOT</carbon.transport.version>
+        <carbon.transport.version>2.1.12</carbon.transport.version>
 
         <carbon.transport.package.import.version.range>[2.0.0, 2.2.0)</carbon.transport.package.import.version.range>
 
