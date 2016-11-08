@@ -8,12 +8,12 @@ package com.sample;
 
 constant endpoint stockIBMEP = new EndPoint("http://localhost:8080/stockquote/IBM");
 constant endpoint stockAllEP = new EndPoint("http://localhost:8080/stockquote/all");
-constant endpoint integrationEP = new EndPoint("http://localhost:9090/onHeaderStocks/getStocksResource");
+constant endpoint integrationEP = new EndPoint("http://localhost:9090/onHeaderStocks/stocksResource");
 
 @GET
 @PUT
 @POST
-@Path("/getIBMStocks")
+@Path("/IBMStocks")
 resource getStocks(message m) {
     message response;
     log(level = "custom", status = "Message Received at setHeaderResource");
@@ -30,7 +30,7 @@ resource getStocks(message m) {
 @GET
 @PUT
 @POST
-@Path("/getStocksResource")
+@Path("/stocksResource")
 resource invokeBackend(message m) {
     message response;
     log(level = "custom", status = "Message Received at getStocksResource");
