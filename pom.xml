@@ -246,5 +246,6 @@
     <modules>
         <module>samples</module>
         <module>product</module>
+        <module>tests</module>
     </modules>
 </project>
