@@ -28,7 +28,7 @@ WSO2 Integration is an ultra high performance, lightweight, configuration-driven
 1) Sample integrations can be found at [CARBON_HOME]/samples/integration-flows directory. Select the passthrough.ballerina file and copy that to [CARBON_HOME]/deployment/integration-flows directory. 
 
 ```sh
-@Path("/stocks")
+@Path("/stockquote")
 @Source(interface="default")
 @Service(tags = {
     "stock_info",
@@ -41,7 +41,7 @@ constant endpoint stockEP = new EndPoint("http://localhost:8080/stockquote/all")
 @GET
 @PUT
 @POST
-@Path("/getStocks")
+@Path("/stocks")
 resource passthrough(message m) {
     message response;
     response = invoke(endpointRef=stockEP, messageRef=m);
@@ -58,7 +58,7 @@ java -jar stockquote-fatjar-*.jar
 
 4) Now your integration service and the backend is started and you can invoke the service using the following curl command
 ```sh
-curl -v http://localhost:9090/stocks/getStocks
+curl -v http://localhost:9090/stockquote/stocks
 ```
 
 5) You should get the following result from the service
