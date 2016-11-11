@@ -34,7 +34,7 @@ disruptorConfigurations:
   parameters:
     -
      name: "disruptor.wait.strategy"
-     value: BUSY_SPIN
+     value: BLOCKING_WAIT
     -
      name: "disruptor.buffer.size"
      value: 1024
