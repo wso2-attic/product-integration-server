@@ -12,34 +12,7 @@
 
     <artifactId>integration-tests</artifactId>
 
-    <build>
-        <extensions>
-            <extension>
-                <groupId>org.apache.maven.wagon</groupId>
-                <artifactId>wagon-ssh</artifactId>
-                <version>${maven.wagon.ssh.version}</version>
-            </extension>
-        </extensions>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
     <dependencies>
-        <dependency>
-            <groupId>org.wso2.carbon</groupId>
-            <artifactId>osgi-test-util</artifactId>
-            <version>${carbon.kernel.version}</version>
-            <scope>test</scope>
-        </dependency>
-
         <!-- Pax Exam Dependencies-->
         <dependency>
             <groupId>javax.inject</groupId>
@@ -72,21 +45,9 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.ops4j.pax.url</groupId>
-            <artifactId>pax-url-aether</artifactId>
-            <version>${pax.url.aether.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.ow2.spec.ee</groupId>
             <artifactId>ow2-jta-1.1-spec</artifactId>
             <version>${ow2.jta.spec.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jacoco</groupId>
-            <artifactId>org.jacoco.ant</artifactId>
-            <version>${org.jacoco.ant.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -101,15 +62,95 @@
             <type>zip</type>
         </dependency>
         <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
-            <version>1.9.0</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.wso2.carbon.protocol.emulator</groupId>
             <artifactId>emulator</artifactId>
             <version>1.0.0</version>
+        </dependency>
+        <!--Pax exam feature dependencies-->
+        <dependency>
+            <groupId>org.ops4j.base</groupId>
+            <artifactId>ops4j-base-lang</artifactId>
+            <version>${dependency.base.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ops4j.base</groupId>
+            <artifactId>ops4j-base-monitors</artifactId>
+            <version>${dependency.base.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ops4j.base</groupId>
+            <artifactId>ops4j-base-net</artifactId>
+            <version>${dependency.base.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ops4j.base</groupId>
+            <artifactId>ops4j-base-store</artifactId>
+            <version>${dependency.base.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ops4j.base</groupId>
+            <artifactId>ops4j-base-io</artifactId>
+            <version>${dependency.base.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ops4j.base</groupId>
+            <artifactId>ops4j-base-spi</artifactId>
+            <version>${dependency.base.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ops4j.base</groupId>
+            <artifactId>ops4j-base-util-property</artifactId>
+            <version>${dependency.base.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ops4j.pax.swissbox</groupId>
+            <artifactId>pax-swissbox-core</artifactId>
+            <version>${dependency.swissbox.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ops4j.pax.swissbox</groupId>
+            <artifactId>pax-swissbox-extender</artifactId>
+            <version>${dependency.swissbox.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ops4j.pax.swissbox</groupId>
+            <artifactId>pax-swissbox-lifecycle</artifactId>
+            <version>${dependency.swissbox.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ops4j.pax.swissbox</groupId>
+            <artifactId>pax-swissbox-tracker</artifactId>
+            <version>${dependency.swissbox.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ops4j.pax.swissbox</groupId>
+            <artifactId>pax-swissbox-framework</artifactId>
+            <version>${dependency.swissbox.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ops4j.pax.exam</groupId>
+            <artifactId>pax-exam-extender-service</artifactId>
+            <version>${pax.exam.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ops4j.pax.exam</groupId>
+            <artifactId>pax-exam-container-rbc</artifactId>
+            <version>${pax.exam.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ops4j.pax.exam</groupId>
+            <artifactId>pax-exam-inject</artifactId>
+            <version>${pax.exam.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ops4j.pax.tipi</groupId>
+            <artifactId>org.ops4j.pax.tipi.hamcrest.core</artifactId>
+            <version>${dependency.tipi.hamcrest.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.geronimo.specs</groupId>
+            <artifactId>geronimo-atinject_1.0_spec</artifactId>
+            <version>${geronimo.atinject.spec.version}</version>
         </dependency>
     </dependencies>
 
@@ -123,46 +164,6 @@
             </activation>
             <build>
                 <plugins>
-                    <plugin>
-                        <artifactId>maven-resources-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <!--copying distribution/carbon-home directory to the target folder-->
-                                <id>copy-resources</id>
-                                <phase>generate-resources</phase>
-                                <goals>
-                                    <goal>copy-resources</goal>
-                                </goals>
-                                <configuration>
-                                    <outputDirectory>${project.build.directory}/carbon-home</outputDirectory>
-                                    <overwrite>true</overwrite>
-                                    <resources>
-                                        <resource>
-                                            <directory>src/test/resources/carbon-home</directory>
-                                        </resource>
-                                    </resources>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-dependency-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>copy-jacoco-dependencies</id>
-                                <phase>compile</phase>
-                                <goals>
-                                    <goal>copy-dependencies</goal>
-                                </goals>
-                                <configuration>
-                                    <outputDirectory>${project.build.directory}</outputDirectory>
-                                    <includeTypes>jar</includeTypes>
-                                    <includeArtifactIds>org.jacoco.ant</includeArtifactIds>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
@@ -234,21 +235,4 @@
             </build>
         </profile>
     </profiles>
-
-    <properties>
-        <javax.inject.version>1</javax.inject.version>
-        <testng.version>6.9.4</testng.version>
-        <pax.exam.version>4.6.0</pax.exam.version>
-        <pax.exam.testng.version>4.6.0</pax.exam.testng.version>
-        <pax.exam.link.mvn.version>4.6.0</pax.exam.link.mvn.version>
-        <pax.url.aether.version>1.6.0</pax.url.aether.version>
-        <ow2.jta.spec.version>1.0.12</ow2.jta.spec.version>
-        <org.jacoco.ant.version>0.7.5.201505241946</org.jacoco.ant.version>
-        <jacoco.version>0.7.5.201505241946</jacoco.version>
-        <maven.paxexam.plugin.version>1.2.4</maven.paxexam.plugin.version>
-    </properties>
-
-
-
-
 </project>

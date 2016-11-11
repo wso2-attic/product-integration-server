@@ -33,7 +33,6 @@ import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import org.wso2.carbon.container.CarbonContainerFactory;
-import org.wso2.carbon.container.options.CarbonDistributionOption;
 import org.wso2.carbon.kernel.utils.CarbonServerInfo;
 import org.wso2.carbon.protocol.emulator.dsl.Emulator;
 import org.wso2.carbon.protocol.emulator.http.client.contexts.HttpClientConfigBuilderContext;
@@ -52,8 +51,10 @@ import static org.wso2.carbon.protocol.emulator.http.server.contexts.HttpServerC
 import static org.wso2.carbon.protocol.emulator.http.server.contexts.HttpServerRequestBuilderContext.request;
 import static org.wso2.carbon.protocol.emulator.http.server.contexts.HttpServerResponseBuilderContext.response;
 
+//Mandatory class annotations for each and every test class in the Pax-Exam test module.
 @Listeners(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
+// Reactor strategy "PerClass" starts the test-distribution for each test class in the test suite.
 @ExamFactory(CarbonContainerFactory.class)
 /**
  * Test class to test end to end passthrough sample.
@@ -74,11 +75,48 @@ public class PassthroughTest {
                 copyPassthroughSampleOption(),
                 copyDropinsBundle(maven().artifactId("emulator").groupId("org.wso2.carbon.protocol.emulator")
                         .versionAsInProject()),
-                CarbonDistributionOption.keepDirectory()
+                copyDropinsBundle(maven().artifactId("ops4j-base-lang").groupId("org.ops4j.base")
+                        .versionAsInProject()),
+                copyDropinsBundle(maven().artifactId("ops4j-base-monitors").groupId("org.ops4j.base")
+                        .versionAsInProject()),
+                copyDropinsBundle(maven().artifactId("ops4j-base-net").groupId("org.ops4j.base")
+                        .versionAsInProject()),
+                copyDropinsBundle(maven().artifactId("ops4j-base-store").groupId("org.ops4j.base")
+                        .versionAsInProject()),
+                copyDropinsBundle(maven().artifactId("ops4j-base-io").groupId("org.ops4j.base")
+                        .versionAsInProject()),
+                copyDropinsBundle(maven().artifactId("ops4j-base-spi").groupId("org.ops4j.base")
+                        .versionAsInProject()),
+                copyDropinsBundle(maven().artifactId("ops4j-base-util-property").groupId("org.ops4j.base")
+                        .versionAsInProject()),
+                copyDropinsBundle(maven().artifactId("pax-swissbox-core").groupId("org.ops4j.pax.swissbox")
+                        .versionAsInProject()),
+                copyDropinsBundle(maven().artifactId("pax-swissbox-extender").groupId("org.ops4j.pax.swissbox")
+                        .versionAsInProject()),
+                copyDropinsBundle(maven().artifactId("pax-swissbox-lifecycle").groupId("org.ops4j.pax.swissbox")
+                        .versionAsInProject()),
+                copyDropinsBundle(maven().artifactId("pax-swissbox-tracker").groupId("org.ops4j.pax.swissbox")
+                        .versionAsInProject()),
+                copyDropinsBundle(maven().artifactId("pax-swissbox-framework").groupId("org.ops4j.pax.swissbox")
+                        .versionAsInProject()),
+                copyDropinsBundle(maven().artifactId("pax-exam-extender-service").groupId("org.ops4j.pax.exam")
+                        .versionAsInProject()),
+                copyDropinsBundle(maven().artifactId("pax-exam-container-rbc").groupId("org.ops4j.pax.exam")
+                        .versionAsInProject()),
+                copyDropinsBundle(maven().artifactId("pax-exam-inject").groupId("org.ops4j.pax.exam")
+                        .versionAsInProject()),
+                copyDropinsBundle(maven().artifactId("org.ops4j.pax.tipi.hamcrest.core").groupId("org.ops4j.pax.tipi")
+                        .versionAsInProject()),
+                copyDropinsBundle(maven().artifactId("geronimo-atinject_1.0_spec").groupId("org.apache.geronimo.specs")
+                        .versionAsInProject()),
+                copyDropinsBundle(maven().artifactId("pax-exam").groupId("org.ops4j.pax.exam")
+                        .versionAsInProject()),
+                copyDropinsBundle(maven().artifactId("testng").groupId("org.testng")
+                        .versionAsInProject())
         };
     }
 
-    @Test
+    @Test (description = "End to end test for simple passthrough sample.")
     public void testSuccessEndtoEndPassthroughScenario() throws Exception {
         Emulator.getHttpEmulator().server().given(configure().host("localhost").port(8080).context("/stockquote"))
                 .when(request().withMethod(HttpMethod.GET).withPath("/all"))
@@ -94,18 +132,11 @@ public class PassthroughTest {
         Assert.assertEquals(response.getReceivedResponseContext().getResponseStatus().toString(), "200 OK");
     }
 
-
     /**
      * Deploy the simple passThrough sample
      */
     private Option copyPassthroughSampleOption() {
-        Path passthroughSamplePath;
-
-        String basedir = System.getProperty("basedir");
-        if (basedir == null) {
-            basedir = Paths.get(".").toString();
-        }
-        passthroughSamplePath = Paths.get("samples", "basic-routing", "passthrough.ballerina");
+        Path passthroughSamplePath = Paths.get("../", "../", "samples", "basic-routing", "passthrough.ballerina");
         return copyFile(passthroughSamplePath, Paths.get("deployment", "integration-flows", "passthrough.ballerina"));
     }
 
