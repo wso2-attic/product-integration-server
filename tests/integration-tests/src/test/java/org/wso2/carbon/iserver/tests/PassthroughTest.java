@@ -125,7 +125,7 @@ public class PassthroughTest {
 
         HttpClientResponseProcessorContext response = Emulator.getHttpEmulator().client()
                 .given(HttpClientConfigBuilderContext.configure().host("localhost").port(9090))
-                .when(HttpClientRequestBuilderContext.request().withPath("/stocks/getStocks")
+                .when(HttpClientRequestBuilderContext.request().withPath("/stockquote/stocks")
                         .withMethod(HttpMethod.GET))
                 .then(HttpClientResponseBuilderContext.response().assertionIgnore()).operation().send();
 
