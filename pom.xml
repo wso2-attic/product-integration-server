@@ -162,7 +162,6 @@
                 <groupId>org.wso2.carbon.gateway.converters</groupId>
                 <artifactId>org.wso2.carbon.gateway.converters.xmltojson.feature</artifactId>
                 <version>${carbon.gw.version}</version>
-                <type>zip</type>
             </dependency>
             <dependency>
                 <groupId>org.wso2.carbon.gateway.converters</groupId>
@@ -173,7 +172,6 @@
                 <groupId>org.wso2.carbon.gateway.converters</groupId>
                 <artifactId>org.wso2.carbon.gateway.converters.jsontoxml.feature</artifactId>
                 <version>${carbon.gw.version}</version>
-                <type>zip</type>
             </dependency>
             <dependency>
                 <groupId>org.wso2.carbon.gateway</groupId>
