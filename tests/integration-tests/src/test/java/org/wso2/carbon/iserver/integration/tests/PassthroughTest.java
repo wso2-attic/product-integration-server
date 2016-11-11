@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.carbon.iserver.tests;
+package org.wso2.carbon.iserver.integration.tests;
 
 import io.netty.handler.codec.http.HttpMethod;
 import io.netty.handler.codec.http.HttpResponseStatus;
@@ -51,13 +51,14 @@ import static org.wso2.carbon.protocol.emulator.http.server.contexts.HttpServerC
 import static org.wso2.carbon.protocol.emulator.http.server.contexts.HttpServerRequestBuilderContext.request;
 import static org.wso2.carbon.protocol.emulator.http.server.contexts.HttpServerResponseBuilderContext.response;
 
-//Mandatory class annotations for each and every test class in the Pax-Exam test module.
 @Listeners(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-// Reactor strategy "PerClass" starts the test-distribution for each test class in the test suite.
 @ExamFactory(CarbonContainerFactory.class)
 /**
  * Test class to test end to end passthrough sample.
+ * @Listeners,@ExamReactorStrategy : Mandatory class annotations for each and every test class
+ *                                   in the Pax-Exam test module.
+ * @ExamFactory : Reactor strategy "PerClass" starts the test-distribution for each test class in the test suite.
  */
 public class PassthroughTest {
 
@@ -68,6 +69,10 @@ public class PassthroughTest {
 
     @Inject
     private CarbonServerInfo carbonServerInfo;
+
+    private String host = "localhost";
+    private int serverPort = 8080;
+    private int clientPort = 9090;
 
     @Configuration
     public Option[] createConfiguration() {
@@ -116,15 +121,16 @@ public class PassthroughTest {
         };
     }
 
-    @Test (description = "End to end test for simple passthrough sample.")
+    @Test (description = "End to end test for simple passthrough sample. The sample invokes a backend and " +
+            "reply the response. The test case evaluates for a successful response status.")
     public void testSuccessEndtoEndPassthroughScenario() throws Exception {
-        Emulator.getHttpEmulator().server().given(configure().host("localhost").port(8080).context("/stockquote"))
+        Emulator.getHttpEmulator().server().given(configure().host(host).port(serverPort).context("/stockquote"))
                 .when(request().withMethod(HttpMethod.GET).withPath("/all"))
                 .then(response().withBody("Retrieving all Stocks....").withStatusCode(HttpResponseStatus.OK)
                         .withHeader("Header1", "value1")).operation().start();
 
         HttpClientResponseProcessorContext response = Emulator.getHttpEmulator().client()
-                .given(HttpClientConfigBuilderContext.configure().host("localhost").port(9090))
+                .given(HttpClientConfigBuilderContext.configure().host(host).port(clientPort))
                 .when(HttpClientRequestBuilderContext.request().withPath("/stockquote/stocks")
                         .withMethod(HttpMethod.GET))
                 .then(HttpClientResponseBuilderContext.response().assertionIgnore()).operation().send();

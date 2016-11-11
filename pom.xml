@@ -210,6 +210,8 @@
 
         <carbon.gw.version>1.0.0-SNAPSHOT</carbon.gw.version>
         <carbon.gw.package.export.version>1.0.0</carbon.gw.package.export.version>
+        <carbon.container.version>5.2.0-SNAPSHOT</carbon.container.version>
+        <carbon.protocol.emulator.version>1.0.0</carbon.protocol.emulator.version>
 
         <osgi.api.version>6.0.0</osgi.api.version>
         <equinox.osgi.version>3.10.2.v20150203-1939</equinox.osgi.version>
