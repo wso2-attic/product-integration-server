@@ -24,11 +24,11 @@
         <version>5</version>
     </parent>
 
-    <groupId>org.wso2.carbon.iserver</groupId>
-    <artifactId>org.wso2.carbon.iserver.parent</artifactId>
+    <groupId>org.wso2.ballerina</groupId>
+    <artifactId>ballerina-parent</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0-SNAPSHOT</version>
-    <name>WSO2 Carbon - Product Integration Server Parent</name>
+    <name>WSO2 Ballerina - Product Parent</name>
 
     <scm>
         <url>https://github.com/wso2/product-integration-server.git</url>

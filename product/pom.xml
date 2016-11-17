@@ -21,16 +21,16 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.wso2.carbon.iserver</groupId>
-        <artifactId>org.wso2.carbon.iserver.parent</artifactId>
+        <groupId>org.wso2.ballerina</groupId>
+        <artifactId>ballerina-parent</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>wso2iserver</artifactId>
+    <artifactId>ballerina</artifactId>
     <packaging>pom</packaging>
-    <name>WSO2 Integration Server - Distribution</name>
-    <description>WSO2 Integration Server - Distribution</description>
+    <name>WSO2 Ballerina - Distribution</name>
+    <description>WSO2 Ballerina - Distribution</description>
     <url>http://wso2.org</url>
 
     <dependencies>
