@@ -73,7 +73,7 @@
         <dependency>
             <groupId>org.wso2.carbon.iserver</groupId>
             <artifactId>wso2iserver</artifactId>
-            <version>${carbon.gw.version}</version>
+            <version>${ballerina.version}</version>
             <type>zip</type>
         </dependency>
         <dependency>
