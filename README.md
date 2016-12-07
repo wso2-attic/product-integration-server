@@ -14,7 +14,7 @@ WSO2 Integration is an ultra high performance, lightweight, configuration-driven
 
 * Supports thousands of concurrent connections/clients.
 
-* Header-based routing using WSO2 Integration engine (Ballerina).
+* Header-based routing using WSO2 Integration engine.
 
 * Defines REST services/APIs using swagger like annotations.
 
@@ -25,7 +25,7 @@ WSO2 Integration is an ultra high performance, lightweight, configuration-driven
 
 ## Start with samples
 
-1) Sample integrations can be found at [CARBON_HOME]/samples/integration-flows directory. Select the passthrough.ballerina file and copy that to [CARBON_HOME]/deployment/integration-flows directory. 
+1) Sample integrations can be found at [CARBON_HOME]/samples/integration-flows directory. Select the passthrough.iflow file and copy that to [CARBON_HOME]/deployment/integration-flows directory. 
 
 ```sh
 @Path("/stockquote")

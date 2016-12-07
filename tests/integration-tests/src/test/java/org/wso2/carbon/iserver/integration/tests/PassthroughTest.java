@@ -142,8 +142,8 @@ public class PassthroughTest {
      * Deploy the simple passThrough sample
      */
     private Option copyPassthroughSampleOption() {
-        Path passthroughSamplePath = Paths.get("../", "../", "samples", "basic-routing", "passthrough.ballerina");
-        return copyFile(passthroughSamplePath, Paths.get("deployment", "integration-flows", "passthrough.ballerina"));
+        Path passthroughSamplePath = Paths.get("../", "../", "samples", "basic-routing", "passthrough.iflow");
+        return copyFile(passthroughSamplePath, Paths.get("deployment", "integration-flows", "passthrough.iflow"));
     }
 
 }
