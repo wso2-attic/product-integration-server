@@ -1,3 +1,7 @@
+# Note
+
+Enterprise Integrator will be used for integration. Hence, product-integration-server has been discontiuned and this repository has been moved to attic.
+
 # WSO2 Integration
 
 WSO2 Integration is the platform for building services and integrations using sequence diagram like visual representation.
