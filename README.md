@@ -1,6 +1,6 @@
 # Note
 
-Since [Ballerina](https://github.com/ballerinalang/ballerina) will be used for mediation, product-integration-server has been discontiuned and this repository has been moved to attic.
+Enterprise Integrator will be used for integration. Hence, product-integration-server has been discontiuned and this repository has been moved to attic.
 
 # WSO2 Integration
 
